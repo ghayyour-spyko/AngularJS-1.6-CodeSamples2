@@ -1,14 +1,9 @@
 angular.module('zamaModule')
-.directive('card', function() {
+.directive('customers', function() {
   return {
   	scope: {
        people: '='
 	   },
-	   templateUrl: 'templates/card.html'
-  };
-})
-.directive('filters', function() {
-  return {
-  	templateUrl: 'templates/filters.html'
+	   templateUrl: 'zama-template.html'
   };
 });

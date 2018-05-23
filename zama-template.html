@@ -1,0 +1,57 @@
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h3>{{customer.name}}</h3>
+		<em style="float:right; position: relative; border-spacing: 2px">
+				<i class="{{customer.popularity_score | scoring}}">{{customer.popularity_score}}% Popularity</i>  
+				<i class="{{customer.qualification_score | scoring}}">{{customer.qualification_score}}% Qualified</i> 
+		</em>
+		<br/>
+	</div> 
+</div>
+<div class="panel-body">
+	<img class="lazy" ng-src="{{customer.thumbnail}}">	
+	<div ng-show="showDetail">
+		<div class="container-fluid" style="position: relative; left:-10px;">
+		    <div class="row row-card">
+		        <div class="col-md-5">
+		            <font class="font-card">Age: {{customer.age}}</font>
+		        </div>
+		        <div class="col-md-7">
+		            <font class="font-card">Hair color: 
+		            <span style="color:{{customer.hair_color}}">{{customer.hair_color}}</span></font>
+		        </div>
+		    </div>
+		    <div class="row row-card">
+		        <div class="col-md-5">
+		            <font class="font-card">Weight: {{customer.weight | zamaNumberEx:2}}</font>
+		        </div>
+		        <div class="col-md-7">
+		            <font class="font-card">Height: {{customer.height | zamaNumberEx:2}}</font>
+		        </div>
+		    </div>
+		    <hr/>
+		    <div class="row row-card">
+		        <div class="col-md-6" ng-show="customer.friends.length>0">
+		            <h3>Friends</h3>
+		                <div ng-repeat="friend in customer.friends">
+		                    {{friend}}
+		                </div>  
+		        </div>
+		        <div class="col-md-6" ng-show="customer.professions.length>0">
+		                <h3>Professions</h3>
+		                <div ng-repeat="profession in customer.professions">
+		                    {{profession}}
+		                </div>       
+		        </div>
+		    </div>
+		</div> 			
+	</div>
+</div>
+<div class="panel-footer" style="margin-bottom: 5px; margin-top: -10px;">
+	<div>{{customer.friends.length}} friends</div> 
+	<div>{{customer.professions.length}} professions</div>
+	<button style="position: relative; float: right; margin-bottom: 5px;margin-top: -17px;"
+	 ng-click="showDetail = !showDetail">
+	<span ng-if="!showDetail"><i class="fa fa-plus" aria-hidden="true"></i></span><span ng-if="showDetail"><i class="fa fa-minus" aria-hidden="true"></i></span>
+	</button>
+</div>
